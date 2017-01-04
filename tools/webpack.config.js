@@ -1,15 +1,10 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-const PATHS = {
-  src: path.join(__dirname, 'app/'),
-  dist: path.join(__dirname, 'dist/')
-};
+import {SRC,DIST,PORT} from './constants';
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: PATHS.src + 'index.pug',
+  template: SRC + 'index.pug',
   filename: 'index.html',
   inject: 'body'
 });
@@ -17,13 +12,14 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     devtool: 'source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/dev-server',
-        PATHS.src + 'index.js' 
+        'webpack-hot-middleware/client',
+        SRC + 'index.js' 
     ],
     output: {
         filename: "main.js",
-        path: PATHS.dist
+        path: DIST,
+        publicPath: "/"
     },    
     module: {
         loaders: [
@@ -33,13 +29,13 @@ module.exports = {
                 loaders: ['react-hot-loader', 'babel-loader']
             },
             {
-                test:   /\.sss/,
-                loaders: [
-                    'style-loader',
-                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]',
-                    'postcss-loader?parser=sugarss'                    
-                ]
+                test:   /\.css/,
+                loaders: ['style-loader', 'css-loader', 'postcss-loader']
             },
+            {
+                test: /\.(jpe?g|png|gif)$/i,
+                loaders: ['file?hash=sha512&digest=hex&name=images/[hash].[ext]', 'img?progressive=true']
+            },            
             {
                 test: /\.pug$/,
                 loader: 'pug?pretty=true'
@@ -47,11 +43,8 @@ module.exports = {
             { test: /\.json$/, loader: 'json' }
         ]
     },
-    devServer: {
-      contentBase: PATHS.dist,
-      hot: true,
-      inline: true,
-      progress: true,
+    resolve: {
+        modulesDirectories: ['app', 'node_modules']
     },
     plugins: [
         HTMLWebpackPluginConfig,

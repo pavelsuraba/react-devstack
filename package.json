@@ -1,12 +1,12 @@
 {
-  "name": "react devstack",
+  "name": "react-devstack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "build": "webpack -p"
+    "start": "babel-node --presets latest ./tools/devServer.js",
+    "build": "webpack -p --config ./webpack.config.prod.js"
   },
   "author": "",
   "license": "MIT",
@@ -18,9 +18,13 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.23.1",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.25.0",
+    "img-loader": "^1.3.1",
     "json-loader": "^0.5.4",
+    "open": "^0.0.5",
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^1.2.1",
     "precss": "^1.4.0",
@@ -30,8 +34,10 @@
     "react-dom": "^15.4.1",
     "react-hot-loader": "^1.3.1",
     "style-loader": "^0.13.1",
-    "sugarss": "^0.2.0",
+    "styled-components": "^1.2.1",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
   }
 }
