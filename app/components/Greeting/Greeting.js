@@ -1,13 +1,26 @@
 import React from 'react';
-import styles from './Greeting.sss' 
+import styled from 'styled-components';
+import {media} from '_utils/mixins';
+
+const Text = styled.p`
+    font-size: 16px;
+    ${ media.desktop`
+        font-size: 24px;
+    `}
+`;
+
+const Name = styled.span`
+    color: #61dafb;
+    font-weight: 700;
+`;
 
 const Greeting = () => {
     return (
-        <p className={styles.text}>
-            <span className={styles.react}>React </span>
+        <Text>
+            <Name>React </Name>
             devstack
-        </p> 
+        </Text> 
     );
 }
 
-export default Greeting; 
+export default Greeting;
