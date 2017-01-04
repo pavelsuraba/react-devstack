@@ -1,0 +1,58 @@
+// Media query
+// -------------------------
+@define-mixin bp $size
+    @media only print, only screen and (min-width: $size)
+        @content
+
+@define-mixin bpmax $size
+    @media only print, only screen and (max-width: $size)
+        @content
+
+@define-mixin print
+    @media only print
+        @content
+
+@define-mixin size $width,$height
+    width: $(width)px
+    height: $(height)px
+
+// Font family
+// -------------------------
+@define-mixin ff $name
+    font-family: $name, Arial, sans-serif
+
+// Font size
+// -------------------------
+// $base-font-size: 15
+
+// =fz($fontValue)
+//     $rem: ($fontValue / $base-font-size)
+//     font-size: #{$fontValue}px
+//     font-size: #{$rem}rem    
+
+// List horizontal
+// -------------------------
+@define-mixin lh
+    li
+        display: inline-block
+        list-style-type: none
+
+// Visually hidden
+// -------------------------
+@define-mixin vh
+    border: 0
+    clip: rect(0,0,0,0)
+    height: 1px
+    margin: -1px
+    overflow: hidden
+    padding: 0
+    position: absolute
+    width: 1px
+
+// Clearfix
+// -------------------------
+@define-mixin cf
+    &:after
+        content: ""
+        display: table
+        clear: both
