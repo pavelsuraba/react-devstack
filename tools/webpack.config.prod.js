@@ -1,28 +1,25 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const PATHS = {
-  src: path.join(__dirname, 'app/'),
-  dist: path.join(__dirname, 'dist/')
-};
+import {SRC,DIST,PORT} from './constants';
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: PATHS.src + 'index.pug',
+  template: SRC + 'index.pug',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true
+  }
 });
 
 module.exports = {
-    devtool: 'source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/dev-server',
-        PATHS.src + 'index.js' 
+        SRC + 'index.js' 
     ],
     output: {
         filename: "main.js",
-        path: PATHS.dist,
+        path: DIST,
         publicPath: "/"
     },    
     module: {
@@ -49,17 +46,21 @@ module.exports = {
     },
     resolve: {
         modulesDirectories: ['app', 'node_modules']
-    },    
-    devServer: {
-      contentBase: PATHS.dist,
-      hot: true,
-      inline: true,
-      progress: true,
     },
     plugins: [
         HTMLWebpackPluginConfig,
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),        
     ],
     postcss: function(webpack) {
         return [
