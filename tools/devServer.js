@@ -13,7 +13,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
     hot: true,
     inline: true,
     compress: true,
-    noInfo: false,
+    noInfo: false, 
     stats: { colors: true }
 }));
 app.use(require('webpack-hot-middleware')(compiler));
