@@ -19,7 +19,7 @@ export default class Main extends Component {
     }
     render() { 
         return (
-            <Container>
+            <Container> 
                 <GreetingContext> 
                     <Greeting/>
                 </GreetingContext>
