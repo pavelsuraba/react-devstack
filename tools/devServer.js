@@ -9,19 +9,12 @@ const app = express();
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
-      contentBase: DIST,
-      hot: true,
-      inline: true,
-      progress: true,
-      stats: {
-        assets: false,
-        colors: true,
-        version: false,
-        hash: false,
-        timings: true,
-        chunks: false,
-        chunkModules: false
-      }      
+    contentBase: DIST,
+    hot: true,
+    inline: true,
+    compress: true,
+    noInfo: false,
+    stats: { colors: true }
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 

@@ -35,7 +35,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif)$/i,
-                loaders: ['file?hash=sha512&digest=hex&name=images/[hash].[ext]', 'img?progressive=true']
+                loaders: ['file?name=images/[name].[ext]', 'img?progressive=true']
             },            
             {
                 test: /\.pug$/,

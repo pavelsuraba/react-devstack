@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node --presets latest ./tools/devServer.js",
-    "build": "webpack -p --config ./tools/webpack.config.prod.babel.js"
+    "build": "webpack -p --config ./tools/webpack.config.prod.babel.js",
+    "tunnel": "browser-sync start --proxy localhost:8080 --no-ghost-mode --tunnel devstack"
   },
   "repository": {
     "type": "git",

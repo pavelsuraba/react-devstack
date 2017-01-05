@@ -28,7 +28,8 @@ $ yarn run build
 ```
 
 ### Mobile debugging
-Mobile debugging through browser-sync tunnel. You need to have browser-sync installed globally
+Mobile debugging through browser-sync tunnel. You need to have browser-sync installed globally.
+Run simultaneously with development mode.
 ```sh
-$ browser-sync start --proxy localhost:8080 --no-ghost-mode --tunnel devstack
+$ yarn run tunnel
 ```
