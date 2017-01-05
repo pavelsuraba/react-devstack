@@ -18,7 +18,7 @@ module.exports = {
         SRC + 'index.js' 
     ],
     output: {
-        filename: "main.js",
+        filename: "js/main.js",
         path: DIST,
         publicPath: "/"
     },    
