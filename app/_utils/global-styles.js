@@ -23,10 +23,6 @@ export default injectGlobal`
 
     body {
         font-family: 'Open Sans','Arial','sans-serif';
-        width: 100vw;
-        height: 100vh; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        color: #333;
     }
 `;

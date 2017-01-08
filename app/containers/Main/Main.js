@@ -1,31 +1,58 @@
 import React, {Component} from 'react';
-import Greeting from 'components/Greeting/Greeting';
-import Logo from 'components/Logo/Logo';
-import styled from 'styled-components'; 
+import TodoApp from 'components/TodoApp/TodoApp';
+import Heading from 'components/Heading/Heading';
+import TodoList from 'components/TodoList/TodoList';
+import CreateTodo from 'components/CreateTodo/CreateTodo';
 
-const Container = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-`;
-
-const GreetingContext = styled.div`
-    margin: 0 0 10px 0;
-`;
+const todos = [
+    {
+        task: 'Make Todo app',
+        isCompleted: false
+    },
+    {
+        task: 'Buy milk',
+        isCompleted: false
+    },
+    {
+        task: 'Make dinner',
+        isCompleted: false
+    }    
+]
 
 export default class Main extends Component {
     constructor() {
-        super(); 
+        super();
+
+        this.addTodo = this.addTodo.bind(this);
+        this.removeTodo = this.removeTodo.bind(this);
+
+        this.state = {
+            todos
+        }
     }
-    render() { 
+    addTodo(task) {
+        const newState = [...this.state.todos];
+        newState.unshift({
+            task,
+            isCompleted: false        
+        });
+        this.setState({todos: newState});
+    }
+    removeTodo(id) {
+        const todos = this.state.todos;
+        const newState = [
+            ...todos.slice(0, id),
+            ...todos.slice(id + 1)
+        ];
+        this.setState({todos: newState});
+    }    
+    render() {
         return (
-            <Container> 
-                <GreetingContext> 
-                    <Greeting/>
-                </GreetingContext>
-                <Logo large/>
-                <img src={require("_assets/jpg/image.jpg")} width="70px" height="70px" alt=""/>
-            </Container>
+            <TodoApp>
+                <Heading>React Todo app</Heading>
+                <CreateTodo addTodo={this.addTodo}/>
+                <TodoList todos={this.state.todos} removeTodo={this.removeTodo}/>
+            </TodoApp>
         )
     }
 }
