@@ -4,13 +4,13 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: SRC + 'index.pug',
-  filename: 'index.html',
-  inject: 'body'
+    template: SRC + 'index.pug',
+    filename: 'index.html',
+    inject: 'body'
 });
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'cheap-eval-source-map',
     entry: [
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client',
@@ -22,39 +22,38 @@ module.exports = {
         publicPath: "/"
     },    
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loaders: ['react-hot-loader', 'babel-loader']
+                use: ['react-hot-loader', 'babel-loader']
             },
             {
                 test:   /\.css/,
-                loaders: ['style-loader', 'css-loader', 'postcss-loader']
+                use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(jpe?g|png|gif)$/i,
-                loaders: ['file?name=images/[name].[ext]', 'img?progressive=true']
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: ['file-loader?name=images/[name].[ext]', 'img-loader?progressive=true']
             },            
             {
                 test: /\.pug$/,
-                loader: 'pug?pretty=true'
-            },                  
-            { test: /\.json$/, loader: 'json' }
+                use: 'pug-loader?pretty=true'
+            }
         ]
     },
     resolve: {
-        modulesDirectories: ['app', 'node_modules']
+        modules: ['app', 'node_modules']
+    },
+    performance: {
+        hints: false
     },
     plugins: [
         HTMLWebpackPluginConfig,
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
-    postcss: function(webpack) {
-        return [
-            require('postcss-cssnext')({ browsers: ['last 2 versions', 'iOS 7', 'ie 10-11', 'Safari 8'] }),
-            require('precss')()
-        ]
-    }
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development'),
+            PRODUCTION: JSON.stringify(false)
+        })
+    ]
 }
