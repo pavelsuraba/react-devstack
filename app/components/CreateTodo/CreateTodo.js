@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const FormWrapper = styled.div`
@@ -40,25 +40,25 @@ const Button = styled.button`
 `;
 
 export default class CreateTodo extends Component {
-    constructor(props) {
+    constructor() {
         super();
         this.addTodoHandler = this.addTodoHandler.bind(this);
     }
     addTodoHandler(e) {
         e.preventDefault();
         const input = this.input;
-        input.value.length > 0 && this.props.addTodo(input.value);
+        if (input.value.length > 0) this.props.addTodo(input.value);
         input.value = '';
     }
     render() {
         return (
             <FormWrapper>
                 <Form onSubmit={this.addTodoHandler} action="">
-                    <Input type="text" placeholder="What do I need to do?" innerRef={comp => this.input = comp}/> 
+                    <Input type="text" placeholder="What do I need to do?" innerRef={comp => this.input = comp}/>
                     <Button>Create</Button>
                 </Form>
             </FormWrapper>
-        )
+        );
     }
 }
 

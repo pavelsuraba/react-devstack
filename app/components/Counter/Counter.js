@@ -11,7 +11,7 @@ const TodoListCounter = (props) => {
         <Wrapper>
             <p>Number of tasks: {props.number}</p>
         </Wrapper>
-    )
-}
+    );
+};
 
 export default TodoListCounter;

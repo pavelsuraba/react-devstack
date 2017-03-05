@@ -6,7 +6,7 @@ const Text = styled.p`
 `;
 
 const Info = (props) => {
-    return <Text>{props.text}</Text>
-}
+    return <Text>{props.text}</Text>;
+};
 
 export default Info;

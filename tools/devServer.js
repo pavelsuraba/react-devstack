@@ -1,4 +1,4 @@
-import {SRC,DIST,PORT} from './constants';
+import { DIST, PORT } from './constants';
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
@@ -13,13 +13,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
     hot: true,
     inline: true,
     compress: true,
-    noInfo: false, 
+    noInfo: false,
     stats: { colors: true }
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, './app/index.pug'));
+    res.sendFile(path.join(__dirname, '../app/index.pug'));
 });
 
 app.listen(PORT, 'localhost', function(err) {

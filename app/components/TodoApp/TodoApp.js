@@ -12,7 +12,7 @@ const TodoApp = (props) => {
         <Wrapper>
             {props.children}
         </Wrapper>
-    )
-}
+    );
+};
 
 export default TodoApp;

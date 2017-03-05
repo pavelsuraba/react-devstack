@@ -9,7 +9,7 @@ const Text = styled.h1`
 const Heading = (props) => {
     return (
         <Text>{props.children}</Text>
-    )
-}
+    );
+};
 
 export default Heading;

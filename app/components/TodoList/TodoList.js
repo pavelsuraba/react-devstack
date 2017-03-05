@@ -8,11 +8,11 @@ const TodoList = (props) => {
     const removeTodo = props.removeTodo;
 
     function renderTodos() {
-        return todos.map((todo,i) => <TodoListItem {...todo} key={i} id={i} removeTodo={removeTodo}/>);
+        return todos.map((todo, i) => <TodoListItem {...todo} key={i} id={i} removeTodo={removeTodo}/>);
     }
 
     function view() {
-        if(todos.length > 0) {
+        if (todos.length > 0) {
             return (
                 <div>
                     <ul>
@@ -20,11 +20,11 @@ const TodoList = (props) => {
                     </ul>
                     <Counter number={todos.length}/>
                 </div>
-            )
+            );
         }
-        return <Info text="Nothing to do"/>
+        return <Info text="Nothing to do"/>;
     }
     return view();
-}
+};
 
 export default TodoList;

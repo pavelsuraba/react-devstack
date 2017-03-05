@@ -58,7 +58,7 @@ const TodoListItem = (props) => {
                 </svg>
             </Button>
         </Item>
-    )
-}
+    );
+};
 
 export default TodoListItem;
