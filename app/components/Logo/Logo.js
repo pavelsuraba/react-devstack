@@ -18,7 +18,7 @@ const Logo = (props) => {
             </svg>
         </LogoWrapper>
     );
-}
+};
 
 Logo.defaultProps = {
     large: false

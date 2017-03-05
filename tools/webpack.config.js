@@ -1,6 +1,5 @@
-import {SRC,DIST,PORT} from './constants';
+import { SRC, DIST } from './constants';
 import webpack from 'webpack';
-import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -14,28 +13,29 @@ module.exports = {
     entry: [
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client',
-        SRC + 'index.js' 
+        'babel-polyfill',
+        SRC + 'index.js'
     ],
     output: {
-        filename: "main.js",
+        filename: 'main.js',
         path: DIST,
-        publicPath: "/"
-    },    
+        publicPath: '/'
+    },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['react-hot-loader', 'babel-loader']
+                use: ['react-hot-loader', 'babel-loader', 'eslint-loader']
             },
             {
-                test:   /\.css/,
+                test: /\.css/,
                 use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: ['file-loader?name=images/[name].[ext]', 'img-loader?progressive=true']
-            },            
+            },
             {
                 test: /\.pug$/,
                 use: 'pug-loader?pretty=true'
@@ -56,4 +56,4 @@ module.exports = {
             PRODUCTION: false
         })
     ]
-}
+};
