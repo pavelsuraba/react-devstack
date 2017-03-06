@@ -26,7 +26,9 @@
     "class-methods-use-this": [0],
     "global-require": [0],
     "max-len": [0],
-    "no-unused-vars": [2, {"varsIgnorePattern": "^_"}]
+    "no-unused-vars": [2, {"varsIgnorePattern": "^_"}],
+    "no-shadow": [0],
+    "no-return-assign": [0]    
   }, 
   "extends": "airbnb-base/legacy"
 }
