@@ -7,28 +7,36 @@
     "sourceType": "module"
   },
   "env": {
-    "browser": true,    
+    "browser": true,
+    "node": true,
     "es6": true
   },
+  "globals": {
+    "module": true    
+  },  
   "plugins": [
     "react"
   ],
   "rules": {
-    "indent": ["error", 4],
+    "class-methods-use-this": [0],
+    "global-require": [0],
+    "indent": ["error", 4, {"SwitchCase": 1}],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],    
     "space-before-function-paren": ["error", {
         "anonymous": "never",
         "named": "never",
         "asyncArrow": "ignore"
     }],
+    "no-console": [0],
+    "no-extra-semi": ["error"],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "react/jsx-uses-vars": "error",
-    "react/jsx-uses-react": "error",
-    "class-methods-use-this": [0],
-    "global-require": [0],
-    "max-len": [0],
-    "no-unused-vars": [2, {"varsIgnorePattern": "^_"}],
     "no-shadow": [0],
-    "no-return-assign": [0]    
-  }, 
-  "extends": "airbnb-base/legacy"
+    "no-trailing-spaces": ["error"],
+    "no-unused-vars": [2, {"varsIgnorePattern": "^_"}],
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "error",    
+    "wrap-iife": [2, "inside"]
+  },
+  "extends": "eslint:recommended"
 }

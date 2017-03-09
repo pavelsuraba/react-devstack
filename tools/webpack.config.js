@@ -11,7 +11,6 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     devtool: 'cheap-eval-source-map',
     entry: [
-        'webpack/hot/dev-server',
         'webpack-hot-middleware/client',
         'babel-polyfill',
         SRC + 'index.js'
