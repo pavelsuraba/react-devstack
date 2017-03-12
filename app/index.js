@@ -1,7 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-import _globalStyles from '_utils/global-styles';
+import { Provider } from 'react-redux';
+import store from './store';
 import Main from 'containers/Main/Main';
 
-render(<Main />, document.getElementById('app'));
+if (module.hot) {
+    module.hot.accept();
+}
+
+render(
+    <Provider store={store}>
+        <Main />
+    </Provider>,
+    document.getElementById('app')
+);
