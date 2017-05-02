@@ -8,25 +8,28 @@ import open from 'open';
 const app = express();
 const compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    contentBase: DIST,
-    hot: true,
-    inline: true,
-    compress: true,
-    noInfo: false,
-    stats: { colors: true }
-}));
-app.use(require('webpack-hot-middleware')(compiler));
+if(process.env.NODE_ENV !== 'production') {
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../app/index.pug'));
-});
+    app.use(require('webpack-dev-middleware')(compiler, {
+        contentBase: DIST,
+        hot: true,
+        inline: true,
+        compress: true,
+        noInfo: false,
+        stats: { colors: true }
+    }));
+    app.use(require('webpack-hot-middleware')(compiler));
 
-app.listen(PORT, 'localhost', function(err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    open(`http://localhost:${PORT}/`);
-    console.log(`Listening at http://localhost:${PORT}`);
-});
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, '../app/index.pug'));
+    });
+
+    app.listen(PORT, 'localhost', function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        open(`http://localhost:${PORT}/`);
+        console.log(`Listening at http://localhost:${PORT}`);
+    });
+}

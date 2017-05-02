@@ -1,9 +1,9 @@
-{ 
+{
   "parserOptions": {
     "ecmaVersion": 8,
     "ecmaFeatures": {
       "jsx": true
-    },    
+    },
     "sourceType": "module"
   },
   "env": {
@@ -12,8 +12,10 @@
     "es6": true
   },
   "globals": {
-    "module": true    
-  },  
+    "module": true,
+    "__DEV__": true,
+    "__PROD__": true
+  },
   "plugins": [
     "react"
   ],
@@ -22,7 +24,7 @@
     "global-require": [0],
     "indent": ["error", 4, {"SwitchCase": 1}],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"],    
+    "semi": ["error", "always"],
     "space-before-function-paren": ["error", {
         "anonymous": "never",
         "named": "never",
@@ -35,7 +37,7 @@
     "no-trailing-spaces": ["error"],
     "no-unused-vars": [2, {"varsIgnorePattern": "^_"}],
     "react/jsx-uses-vars": "error",
-    "react/jsx-uses-react": "error",    
+    "react/jsx-uses-react": "error",
     "wrap-iife": [2, "inside"]
   },
   "extends": "eslint:recommended"

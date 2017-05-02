@@ -49,8 +49,8 @@ module.exports = {
     plugins: [
         HTMLWebpackPluginConfig,
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),            
-            PRODUCTION: true
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            '__PROD__': true
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {

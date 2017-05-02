@@ -33,3 +33,13 @@ Run simultaneously with development mode.
 ```sh
 $ yarn run tunnel
 ```
+
+### Troubleshooting
+in case of img-loader bug:
+```sh
+Module build failed: Error: dyld: Library not loaded: /usr/local/opt/libpng/lib/libpng16.16.dylib
+```
+
+run:
+    brew update
+    brew install libpng
