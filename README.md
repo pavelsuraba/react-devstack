@@ -41,5 +41,7 @@ Module build failed: Error: dyld: Library not loaded: /usr/local/opt/libpng/lib/
 ```
 
 run:
-    brew update
-    brew install libpng
+```sh
+$ brew update
+$ brew install libpng
+```
