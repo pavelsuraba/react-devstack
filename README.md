@@ -1,7 +1,7 @@
 # React devstack
 
 ### Version
-1.0.0
+1.2.0
 
 ### Description
 Minimal [React](https://facebook.github.io/react/) devstack included:
