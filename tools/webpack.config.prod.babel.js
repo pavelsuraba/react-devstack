@@ -1,6 +1,7 @@
 import { SRC, DIST } from './constants';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import BabiliPlugin from 'babili-webpack-plugin';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: SRC + 'index.pug',
@@ -49,20 +50,8 @@ module.exports = {
     plugins: [
         HTMLWebpackPluginConfig,
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
-            '__PROD__': true
+            'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
-        })
+        new BabiliPlugin()
     ]
 };
