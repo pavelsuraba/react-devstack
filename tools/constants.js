@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export const ABSOLUTE_BASE = path.normalize(path.join(__dirname, '..'));
+const ABSOLUTE_BASE = path.normalize(path.join(__dirname, '..'));
 
 const constants = Object.freeze({
     ABSOLUTE_BASE,
@@ -9,8 +9,8 @@ const constants = Object.freeze({
     PORT: 8080
 });
 
-export const DIST = constants.DIST;
-export const SRC = constants.SRC;
-export const PORT = constants.PORT;
-
-export default constants;
+module.exports = {
+    DIST: constants.DIST,
+    SRC: constants.SRC,
+    PORT: constants.PORT
+};

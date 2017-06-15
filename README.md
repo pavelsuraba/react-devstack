@@ -19,7 +19,7 @@ $ yarn
 
 ### Development
 ```sh
-$ yarn run start
+$ yarn run dev
 ```
 
 ### Production

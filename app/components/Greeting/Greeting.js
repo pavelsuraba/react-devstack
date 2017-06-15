@@ -14,13 +14,9 @@ const Name = styled.span`
     font-weight: 700;
 `;
 
-const Greeting = () => {
-    return (
-        <Text>
-            <Name>React </Name>
-            devstack
-        </Text>
-    );
-};
-
-export default Greeting;
+export default () => (
+    <Text>
+        <Name>React </Name>
+        devstack
+    </Text>
+);

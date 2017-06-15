@@ -1,6 +1,7 @@
-import { SRC, DIST } from './constants';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const constants = require('./constants');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { SRC, DIST } = constants;
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: SRC + 'index.pug',
