@@ -1,6 +1,7 @@
 const constants = require('./constants');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { SRC, DIST } = constants;
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -52,6 +53,14 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.js',
+            minChunks(module) {
+                var context = module.context;
+                return context && context.indexOf('node_modules') >= 0;
+            },
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -60,9 +69,10 @@ module.exports = {
                 comments: false
             }
         }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+            reportFilename: 'report.html'
         })
     ]
 };

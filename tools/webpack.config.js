@@ -53,6 +53,14 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.js',
+            minChunks(module) {
+                var context = module.context;
+                return context && context.indexOf('node_modules') >= 0;
+            },
         })
     ]
 };

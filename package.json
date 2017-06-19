@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node ./tools/server.js",
     "dev": "NODE_ENV=development node ./tools/server.js",
-    "build": "NODE_ENV=production webpack -p --config ./tools/webpack.config.prod.js",
-    "tunnel": "browser-sync start --proxy localhost:8080 --no-ghost-mode --tunnel devstack"
+    "build": "npm run clean | NODE_ENV=production webpack -p --config ./tools/webpack.config.prod.js",
+    "start": "NODE_ENV=production node ./tools/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tunnel": "browser-sync start --proxy localhost:8080 --no-ghost-mode --tunnel devstack",
+    "clean": "rm -rf ./dist/*"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "style-loader": "^0.18.1",
     "styled-components": "^2.0.0",
     "webpack": "^2.6.1",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0"
   }
