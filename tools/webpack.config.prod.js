@@ -50,6 +50,7 @@ module.exports = {
     },
     plugins: [
         HTMLWebpackPluginConfig,
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
@@ -60,14 +61,6 @@ module.exports = {
                 var context = module.context;
                 return context && context.indexOf('node_modules') >= 0;
             },
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false
-            }
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',

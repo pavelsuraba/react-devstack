@@ -1,13 +1,13 @@
 # React devstack
 
 ### Version
-1.2.0
+1.3.0
 
 ### Description
 Minimal [React](https://facebook.github.io/react/) devstack included:
 * custom [Express](http://expressjs.com/) server
 * [Styled components](https://styled-components.com/) for styling
-* [Webpack 2](https://webpack.github.io/) a module bundler
+* [Webpack 3](https://webpack.github.io/) a module bundler
 * [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html) (HMR) is a feature to inject updated modules into the active runtime
 * [Pug](https://pugjs.org/api/getting-started.html) a HTML template engine
 

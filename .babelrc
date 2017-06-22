@@ -3,9 +3,15 @@
     "presets": [
         ["env", {
             "targets": {
-                "browsers": ["last 2 versions"]
-            }
+                "browsers": ["last 2 versions", "not ie <= 10"]
+            },
+            "modules": false
         }],
         "react"
-    ]
+    ],
+    "env": {
+        "production": {
+            "presets": ["babili"]
+        }
+    }
 }

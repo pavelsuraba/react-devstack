@@ -26,7 +26,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['react-hot-loader', 'babel-loader', 'eslint-loader']
+                use: ['babel-loader', 'eslint-loader'] // TODO 'react-hot-loader' not working with webpack 3
             },
             {
                 test: /\.css/,
@@ -51,6 +51,7 @@ module.exports = {
     plugins: [
         HTMLWebpackPluginConfig,
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
