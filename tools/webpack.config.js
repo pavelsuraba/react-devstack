@@ -12,6 +12,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     devtool: 'cheap-eval-source-map',
     entry: [
+        'react-hot-loader/patch',
         'webpack-hot-middleware/client',
         'babel-polyfill',
         SRC + 'index.js'
@@ -26,7 +27,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'eslint-loader'] // TODO 'react-hot-loader' not working with webpack 3
+                use: ['babel-loader', 'eslint-loader']
             },
             {
                 test: /\.css/,

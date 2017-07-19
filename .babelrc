@@ -1,9 +1,12 @@
 {
-    "plugins": ["transform-object-rest-spread", "styled-components"],
+    "plugins": ["react-hot-loader/babel", "transform-object-rest-spread", "styled-components"],
     "presets": [
         ["env", {
             "targets": {
                 "browsers": ["last 2 versions", "not ie <= 10"]
+            },
+            "es2015": {
+                "modules": false
             },
             "modules": false
         }],
