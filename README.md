@@ -1,7 +1,6 @@
-# DEPRECATED!
-### This project is no longer maintained!
-in favour of [next.js](https://github.com/zeit/next.js/) or [CRA](https://github.com/facebookincubator/create-react-app)
-...
+# Infrastructure sandbox
+For production apps I recommend using [next.js](https://github.com/zeit/next.js/)
+
 # React devstack
 
 ### Version

@@ -17,8 +17,5 @@ const render = Component => {
 render(Main);
 
 if (module.hot) {
-    module.hot.accept('./containers/Main/Main', () => {
-        const Updated = require('./containers/Main/Main');
-        render(Updated);
-    });
+    module.hot.accept('./containers/Main/Main', () => render(Main));
 }

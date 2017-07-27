@@ -2,13 +2,15 @@ const constants = require('./constants');
 const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config');
+const devMiddleware = require('webpack-dev-middleware');
+const hotMiddleware = require('webpack-hot-middleware');
 const { DIST, PORT } = constants;
 
 const app = express();
 const compiler = webpack(config);
 
 if(process.env.NODE_ENV === 'development') {
-    app.use(require('webpack-dev-middleware')(compiler, {
+    app.use(devMiddleware(compiler, {
         contentBase: DIST,
         hot: true,
         inline: true,
@@ -16,7 +18,7 @@ if(process.env.NODE_ENV === 'development') {
         noInfo: false,
         stats: { colors: true }
     }));
-    app.use(require('webpack-hot-middleware')(compiler));
+    app.use(hotMiddleware(compiler));
 }
 
 app.use(express.static('dist'));
