@@ -46,7 +46,7 @@ module.exports = {
         ]
     },
     resolve: {
-        modules: ['app', 'node_modules']
+        modules: [SRC, 'node_modules']
     },
     plugins: [
         HTMLWebpackPluginConfig,
