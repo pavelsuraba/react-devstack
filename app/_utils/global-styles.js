@@ -19,12 +19,14 @@ export default injectGlobal`
         line-height: 1.5;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         touch-action: manipulation;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     body {
         font-family: 'Open Sans','Arial','sans-serif';
         width: 100vw;
-        height: 100vh; 
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;

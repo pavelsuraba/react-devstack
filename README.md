@@ -12,7 +12,7 @@ Minimal [React](https://facebook.github.io/react/) devstack included:
 * [Styled components](https://styled-components.com/) for styling
 * [Webpack 3](https://webpack.github.io/) a module bundler
 * [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html) (HMR) is a feature to inject updated modules into the active runtime
-* [Pug](https://pugjs.org/api/getting-started.html) a HTML template engine
+* [Pug](https://pugjs.org/api/getting-started.html) an HTML template engine
 
 ### Installation
 ```sh

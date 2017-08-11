@@ -9,14 +9,13 @@ const Text = styled.p`
     `}
 `;
 
-const Name = styled.span`
-    color: #61dafb;
+const Highlight = styled.strong`
+    color: #00d8ff;
     font-weight: 700;
 `;
 
 export default () => (
     <Text>
-        <Name>React </Name>
-        devstack
+        <Highlight>React </Highlight>devstack
     </Text>
 );

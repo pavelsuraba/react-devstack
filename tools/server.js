@@ -28,9 +28,7 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, (err) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log(`Listening at http://localhost:${PORT}`);
+    err
+        ? console.log(err)
+        : console.log(`Listening at http://localhost:${PORT}`);
 });
